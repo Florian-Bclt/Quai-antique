@@ -79,4 +79,15 @@ const awards = [
   },
 ];
 
-export default { wines, cocktails, awards };
+const hours = [
+  {
+    day: 'Mardi - Vendredi :',
+    hour: '11:30 - 14:00, 18:30 - 22:00'
+  },
+  {
+    day: 'Samedi - Dimanche :',
+    hour: '11:30 - 15:30, 18:30 - 23:30'
+  }
+]
+
+export default { wines, cocktails, awards, hours };
