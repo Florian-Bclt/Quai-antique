@@ -16,7 +16,7 @@ const Footer = () => (
         <p className="p__opensans">phone number</p>
       </div>
       <div className="app__footer-links_logo">
-        <img src={images.gericht} alt="footer_logo" />
+        <img src={images.quaiLogo} alt="footer_logo" />
         <p className="p__opensans">"Le meilleur moyen de se retrouver est de se perdre au service des autres."</p>
         <img src={images.spoon} alt="spoon" className='spoon__img' style={{ marginTop: 15 }} />
         <div className="app__footer-links_icons">
@@ -33,7 +33,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="footer__copyright">
-      <p className='p__opensans'>2023 Quai Antique. Site créé par <a href='https://boucletflorian.netlify.app/'>Bouclet Florian</a>. Tous droits réservés.</p>
+      <p className='p__opensans'>2023 Quai Antique. Site créé par <a href='https://boucletflorian.netlify.app/' target='_blank'>Bouclet Florian</a>. Tous droits réservés.</p>
     </div>
   </div>
 );
