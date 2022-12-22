@@ -26,6 +26,11 @@
   margin-left: 1rem;
 }
 
+.app__wrapper_img img {
+  border-radius: 20px;
+  opacity: 0.8;
+}
+
 /* ------------MEDIA QUERIES---------------*/
 
 @media screen and (min-width: 1900px) {

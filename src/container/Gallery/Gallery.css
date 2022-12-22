@@ -56,6 +56,15 @@
   cursor: pointer;
 }
 
+.gallery__image-icon, .gallery_image-title {
+  position: absolute;
+  color: #fff;
+  font-size: 2rem;
+  opacity: 0.5;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
 .app__gallery-images_card img {
   width: 100%;
   height: 100%;
@@ -68,8 +77,11 @@
   opacity: 0.35;
 }
 
-.app__gallery-images_card:hover .gallery__image-icon {
+.app__gallery-images_card:hover .gallery__image-icon  {
   opacity: 1;
+}
+.gallery_image-title {
+  border: 1px solid red;
 }
 
 .app__gallery-images_arrows {

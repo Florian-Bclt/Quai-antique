@@ -4,7 +4,7 @@ import { SubHeading } from '../../components';
 import { BsInstagram, BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs'
 import './Gallery.css';
 
-const galleryImages = [images.gallery01, images.gallery02, images.gallery03, images.gallery04]
+const galleryImages = [images.gallery01, images.gallery02, images.gallery03, images.gallery04, images.gallery05, images.gallery06]
 
 const Gallery = () => {
   const scrollRef = useRef(null);
@@ -24,9 +24,9 @@ const Gallery = () => {
         <SubHeading title='Instagram' />
         <h1 className='headtext__cormorant'>Photo Gallery</h1>
         <p className='p__opensans' style={{ color: '#AAA', marginTop: '2rem'}}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum sint et nihil officiis numquam ad, eos cumque earum harum nobis maxime temporibus animi repudiandae odit possimus vel asperiores culpa. Sint.
+          Laissez-vous tenter par nos plats régionnaux à base de produits locaux. Retrouvez un aperçu des chefs d'oeuvres de notre cuisine.
         </p>
-        <button type='button' className='custom__button'>View More</button>
+        <button type='button' className='custom__button'>Réserver</button>
       </div>
       <div className="app__gallery-images">
         <div className="app__gallery-images_container" ref={scrollRef}>

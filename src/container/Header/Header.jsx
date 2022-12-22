@@ -6,10 +6,10 @@ import './Header.css';
 const Header = () => (
   <div className='app__header app__wrapper section__padding' id='home'>
     <div className="app__wrapper_info">
-      <SubHeading title='Chase the new flavour' />
-      <h1 className='app__header-h1'>The Key to Find Dining</h1>
-      <p className='p__opensans' style={{margin: '2rem 0'}}>Sit tellus lobortis sed senectus vivamus molestie. condimentum voltpat morbi bfacilliss quakjld sclefdsjlksfj dsaprien. et, penatibus alique amerk</p>
-      <button type='button' className='custom__button'>Explore Menu</button>
+      <SubHeading title='Découvrez de nouvelles saveurs' />
+      <h1 className='app__header-h1'>La clé d'un restaurant</h1>
+      <p className='p__opensans' style={{margin: '2rem 0'}}>Savourez les plaisirs simples de la vie en famille, autour d'un plat authentique et régional confectionné par nos meilleurs cuisiniers.</p>
+      <button type='button' className='custom__button'>Découvrir les menus</button>
     </div>
 
     <div className="app__wrapper_img">

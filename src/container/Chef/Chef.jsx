@@ -15,12 +15,12 @@ const Chef = () => (
       <div className="app__chef-content">
         <div className="app__chef-content_quote">
           <img src={images.quote} alt="quote" />
-          <p className='p__opensans'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p className='p__opensans'>Ce qui me plait c'est avant tout de vous faire plaisir !</p>
         </div>
-        <p className='p__opensans'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum vel, nam tenetur commodi consectetur molestias in est facilis laudantium officiis libero iure atque obcaecati excepturi sit eveniet mollitia minima iusto.</p>
+        <p className='p__opensans'>Passionné de cuisine depuis toujours, j'ai pu réaliser mon rêve qui était d'ouvrir un restaurant étoilé. Satisfait, je souhaite revenir à une cuisine plus traditionnelle. Amoureux de la Savoie, j'ai choisi de m'installer à Chambéry pour cuisiner ses recettes incontournables.</p>
       </div>
       <div className="app__chef-sign">
-        <p>Florian Bouclet</p>
+        <p>Arnaud Michant</p>
         <p className='p__opensans'>Chef et Fondateur</p>
         <img src={images.sign} alt="sign" />
       </div>
