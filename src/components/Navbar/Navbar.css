@@ -124,7 +124,7 @@
     display: none;
   }
 
-  .app__navbar-logo {
+  .app__navbar-logo img{
     height: 6vh;
   }
 }
