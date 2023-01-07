@@ -15,7 +15,8 @@
 
 .app__navbar-logo img {
   width: auto;
-  height: 10vh;
+  margin: 0;
+  height: 8vh;
 }
 
 .app__navbar-links {

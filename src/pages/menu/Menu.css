@@ -1,0 +1,35 @@
+.app__wrapper-menu {
+  border: 1px solid var(--color-golden);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 1rem;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.app__wrapper-menu span {
+  color: var(--color-golden);
+}
+
+.app__wrapper-menu h1 {
+  color: var(--color-golden);
+  font-weight: 900;
+}
+
+.app__wrapper-menu h2 {
+  color: var(--color-golden);
+  font-style: italic;
+}
+
+.app__wrapper-menu h6 {
+  margin-bottom: 3.5rem;
+}
+
+.app__wrapper-menu img {
+  margin: 1.5rem;
+}

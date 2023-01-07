@@ -17,7 +17,7 @@ const Navbar = () => {
       </div>
       <ul className='app__navbar-links'>
         <li className='p__opensans'><a href='/'>Accueil</a></li>
-        <li className='p__opensans'><a href='#card'>Menu</a></li>
+        <li className='p__opensans'><a href='/menu'>Menu</a></li>
         <li className='p__opensans'><a href='#about'>A propos</a></li>
         <li className='p__opensans'><a href='#menu'>La Carte</a></li>
         <li className='p__opensans'><a href='#contact'>Contact</a></li>
@@ -36,7 +36,7 @@ const Navbar = () => {
             <ul className='app__navbar-smallscreen_links'>
               <li className='p__opensans'><a href='#home'>Accueil</a></li>
               <li className='p__opensans'><a href='#about'>A propos</a></li>
-              <li className='p__opensans'><a href='#menu'>Menu</a></li>
+              <li className='p__opensans'><a href='/menu'>Menu</a></li>
               <li className='p__opensans'><a href='#awards'>La carte</a></li>
               <li className='p__opensans'><a href='#contact'>Contact</a></li>
             </ul>
