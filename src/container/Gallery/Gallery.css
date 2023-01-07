@@ -5,6 +5,10 @@
   padding: 4rem 0 4rem 6rem;
 }
 
+.app__gallery a:hover {
+  color: unset;
+}
+
 .app__gallery-content {
   flex: 1;
   display: flex;

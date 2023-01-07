@@ -16,14 +16,13 @@ const Navbar = () => {
         <img src={images.quaiLogo} alt='app logo' />
       </div>
       <ul className='app__navbar-links'>
-        <li className='p__opensans'><a href='/'>Accueil</a></li>
-        <li className='p__opensans'><a href='/menu'>Menu</a></li>
-        <li className='p__opensans'><a href='#about'>A propos</a></li>
-        <li className='p__opensans'><a href='#menu'>La Carte</a></li>
-        <li className='p__opensans'><a href='#contact'>Contact</a></li>
+        <li className='p__opensans'><Link to='/'>Accueil</Link></li>
+        <li className='p__opensans'><Link to='/menu'>Menu</Link></li>
+        <li className='p__opensans'><Link to='/carte'>La Carte</Link></li>
+        <li className='p__opensans'><Link to='/contact'>Contact</Link></li>
       </ul>
       <div className="app__navbar-login">
-        <a href='/' className='p__opensans'>Réserver</a>
+        <Link to='/' className='p__opensans'>Réserver</Link>
         <div />
         <Link to="/login" className='p__opensans'>Se connecter</Link>
       </div>
@@ -34,11 +33,10 @@ const Navbar = () => {
           <div className='app__navbar-smallscreen_overlay flex__center slide-bottom'>
             <MdOutlineRestaurantMenu fontSize={27} className='overlay__close' onClick={() => setToggleMenu(false)} />
             <ul className='app__navbar-smallscreen_links'>
-              <li className='p__opensans'><a href='#home'>Accueil</a></li>
-              <li className='p__opensans'><a href='#about'>A propos</a></li>
-              <li className='p__opensans'><a href='/menu'>Menu</a></li>
-              <li className='p__opensans'><a href='#awards'>La carte</a></li>
-              <li className='p__opensans'><a href='#contact'>Contact</a></li>
+              <li className='p__opensans'><Link to='/'>Accueil</Link></li>
+              <li className='p__opensans'><Link to='/menu'>Menu</Link></li>
+              <li className='p__opensans'><Link to='/cart'>La Carte</Link></li>
+              <li className='p__opensans'><Link to='/contact'>Contact</Link></li>
             </ul>
           </div>
 

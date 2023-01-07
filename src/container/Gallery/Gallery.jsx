@@ -3,6 +3,7 @@ import { images } from '../../constants';
 import { SubHeading } from '../../components';
 import { BsInstagram, BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs'
 import './Gallery.css';
+import { Link } from 'react-router-dom';
 
 const galleryImages = [images.gallery01, images.gallery02, images.gallery03, images.gallery04, images.gallery05, images.gallery06]
 
@@ -21,12 +22,12 @@ const Gallery = () => {
   return (
     <div className='app__gallery flex__center'>
       <div className="app__gallery-content">
-        <SubHeading title='Instagram' />
-        <h1 className='headtext__cormorant'>Photo Gallery</h1>
+        <SubHeading title='Galerie' />
+        <h1 className='headtext__cormorant'>Quelques douceurs</h1>
         <p className='p__opensans' style={{ color: '#AAA', marginTop: '2rem'}}>
           Laissez-vous tenter par nos plats régionnaux à base de produits locaux. Retrouvez un aperçu des chefs d'oeuvres de notre cuisine.
         </p>
-        <button type='button' className='custom__button'>Réserver</button>
+        <button type='button' className='custom__button'><Link to='/'>Réserver</Link></button>
       </div>
       <div className="app__gallery-images">
         <div className="app__gallery-images_container" ref={scrollRef}>

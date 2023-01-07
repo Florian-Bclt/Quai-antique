@@ -15,6 +15,10 @@
   width: 80%;
 }
 
+.app__header a:hover {
+  color: unset;
+} 
+
 /* ------------MEDIA QUERIES---------------*/
 
 @media screen and (max-width: 2000px) {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { images, data } from '../../constants';
 import { SubHeading } from '../../components';
+import { Link } from 'react-router-dom';
+
 
 const FindUs = () => (
   <div className='app__bg app__wrapper section__padding' id='contact'>
@@ -15,7 +17,7 @@ const FindUs = () => (
               <p className='p__opensans'>{hour.day} {hour.hour}</p> 
             ))}
       </div>
-      <button className='custom__button' style={{ marginTop: '2rem' }}>Réserver</button>
+      <button className='custom__button' style={{ marginTop: '2rem' }}><Link to='/' style={{ color: 'unset'}}>Réserver</Link></button>
     </div>
     <div className="app__wrapper_img">
       <img src={images.findus} alt="find us" />
