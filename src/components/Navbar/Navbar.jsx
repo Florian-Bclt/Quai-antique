@@ -18,7 +18,7 @@ const Navbar = () => {
       <ul className='app__navbar-links'>
         <li className='p__opensans'><Link to='/'>Accueil</Link></li>
         <li className='p__opensans'><Link to='/menu'>Menu</Link></li>
-        <li className='p__opensans'><Link to='/carte'>La Carte</Link></li>
+        <li className='p__opensans'><Link to='/cart'>La Carte</Link></li>
         <li className='p__opensans'><Link to='/contact'>Contact</Link></li>
       </ul>
       <div className="app__navbar-login">

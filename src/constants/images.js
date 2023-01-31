@@ -7,6 +7,7 @@ import gallery03 from '../assets/gallery03.jpg';
 import gallery04 from '../assets/gallery04.png';
 import gallery05 from '../assets/gallery05.png';
 import gallery06 from '../assets/gallery06.png';
+import gallery07 from '../assets/gallery07.jpg';
 import knife from '../assets/knife.png';
 import menu from '../assets/menu.png';
 import overlaybg from '../assets/overlaybg.png';
@@ -22,6 +23,7 @@ import sign from '../assets/sign.png';
 import quote from '../assets/quote.png';
 import quaiLogo from '../assets/quai-logo.png';
 
+
 export default {
   bg,
   chef,
@@ -32,6 +34,7 @@ export default {
   gallery04,
   gallery05,
   gallery06,
+  gallery07,
   knife,
   menu,
   overlaybg,
