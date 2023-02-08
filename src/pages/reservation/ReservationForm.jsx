@@ -47,15 +47,18 @@ const ReservationForm = () => {
         <div className="dinner p__cormorant">
           <h5>Diner</h5>
           <div className='time'>
-            <button className='select-time-btn'>12:00</button>
-            <button className='select-time-btn'>12:15</button>
-            <button className='select-time-btn'>12:30</button>
-            <button className='select-time-btn'>12:45</button>
-            <button className='select-time-btn'>13:00</button>
-            <button className='select-time-btn'>13:15</button>
-            <button className='select-time-btn'>13:30</button>
-            <button className='select-time-btn'>13:45</button>
-            <button className='select-time-btn'>14:00</button>
+            <button className='select-time-btn'>19:00</button>
+            <button className='select-time-btn'>19:15</button>
+            <button className='select-time-btn'>19:30</button>
+            <button className='select-time-btn'>19:45</button>
+            <button className='select-time-btn'>20:00</button>
+            <button className='select-time-btn'>20:15</button>
+            <button className='select-time-btn'>20:30</button>
+            <button className='select-time-btn'>20:45</button>
+            <button className='select-time-btn'>21:00</button>
+            <button className='select-time-btn'>21:15</button>
+            <button className='select-time-btn'>21:30</button>
+            <button className='select-time-btn'>21:45</button>
           </div>
         </div>
     </div>
