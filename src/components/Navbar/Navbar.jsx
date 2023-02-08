@@ -22,7 +22,7 @@ const Navbar = () => {
         <li className='p__opensans'><Link to='/contact'>Contact</Link></li>
       </ul>
       <div className="app__navbar-login">
-        <Link to='/' className='p__opensans'>Réserver</Link>
+        <Link to='/reservation' className='p__opensans'>Réserver</Link>
         <div />
         <Link to="/login" className='p__opensans'>Se connecter</Link>
       </div>

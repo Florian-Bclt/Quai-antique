@@ -1,0 +1,79 @@
+.app__reservation-container {
+  border: 1px solid var(--color-golden);
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  margin-left: 25%;
+  margin-top: 2rem;
+  width: 50%;
+  height: 75vh;
+  box-shadow: 0px 0px 6px 0px var(--color-golden);
+}
+
+.app__reservation-title {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px groove var(--color-golden);
+  width: 100%;
+  height: min-content;
+  color: var(--color-golden);
+  padding: 4px 0px 4px 0px;
+}
+
+.app_reservation-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid var(--color-grey);
+  padding-bottom: 1.5rem;
+}
+
+.app_reservation-form p {
+  display: flex;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.reservation-input {
+  height: 2rem;
+  width: 14rem;
+  font-size: 14px;
+  padding-left: 0.8rem ;
+}
+
+.reservation-icon {
+  font-size: 2rem;
+  margin-right: 5px;
+  color: var(--color-golden);
+}
+
+.covered {
+  display: flex;
+  justify-content: center;
+}
+
+#calendar {
+  margin-left: 5rem;
+}
+
+.lunch h5, .dinner h5 {
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.select-time-btn {
+  background-color: var(--color-golden);
+  border-radius: 5px;
+  height: 2rem;
+  width: 4rem;
+  margin-left: 2rem;
+  margin-top: 0.4rem;
+  font-size: 18px;
+  border: 1px solid var(--color-black);
+}
+
+.select-time-btn:hover {
+  background-color: var(--color-black);
+  color: var(--color-golden);
+  border: 1px solid var(--color-golden);
+}
