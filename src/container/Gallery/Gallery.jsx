@@ -27,7 +27,7 @@ const Gallery = () => {
         <p className='p__opensans' style={{ color: '#AAA', marginTop: '2rem'}}>
           Laissez-vous tenter par nos plats régionnaux à base de produits locaux. Retrouvez un aperçu des chefs d'oeuvres de notre cuisine.
         </p>
-        <button type='button' className='custom__button'><Link to='/'>Réserver</Link></button>
+        <button type='button' className='custom__button'><Link to='/reservation'>Réserver</Link></button>
       </div>
       <div className="app__gallery-images">
         <div className="app__gallery-images_container" ref={scrollRef}>
