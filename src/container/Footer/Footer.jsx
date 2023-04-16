@@ -12,8 +12,8 @@ const Footer = () => (
     <div className="app__footer-links">
       <div className="app__footer-links_contact">
         <h1 className='app__footer-headtext'>Nous Contacter</h1>
-        <p className="p__opensans">adresse</p>
-        <p className="p__opensans">phone number</p>
+        <a className='p__opensans' href='https://goo.gl/maps/fZxKDHXqYttqCBne9'>Avenue des chevaliers tireurs, 73000 Chambéry</a>
+        <p className="p__opensans">+33 XX XX XX XX</p>
       </div>
       <div className="app__footer-links_logo">
         <img src={images.quaiLogo} alt="footer_logo" />

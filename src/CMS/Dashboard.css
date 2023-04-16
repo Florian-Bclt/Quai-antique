@@ -1,0 +1,85 @@
+::-webkit-scrollbar {
+  display: none;
+}
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  color: var(--color-white);
+}
+
+.title {
+  margin: 2em 5em 2em 5em;
+  border-bottom: 1px solid var(--color-golden);
+}
+
+.cards {
+  margin: 0 5em 1em 5em;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.card {
+  border: 1px solid var(--color-golden);
+  height: 10em;
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.card:hover{
+  background-color: var(--color-white);
+  transition: 0.5s ease-in;
+}
+
+.card h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 10em;
+}
+
+.card h1:hover{
+  color: var(--color-black);
+}
+
+.reservation__card {
+  height: max-content;
+  min-height: 10em;
+}
+
+.reservations {
+  margin: 1em;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 2000px) {
+  .card h1{
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .card h1{
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .title{
+    display: flex;
+    justify-content: center
+  }
+
+  .cards {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

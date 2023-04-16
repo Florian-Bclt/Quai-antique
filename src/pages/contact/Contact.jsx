@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import { data } from '../../constants';
 import { Navbar, SubHeading } from '../../components';
+import { Link } from 'react-router-dom';
+import './Contact.css';
+
 
 function Contact() {
+
   return (
     <>
     <Navbar />
@@ -18,11 +22,14 @@ function Contact() {
                 <p className='p__opensans'>{hour.day} {hour.hour}</p> 
               ))}
         </div>
-        <button className='custom__button' style={{ marginTop: '2rem' }}>Réserver</button>
+        <button className='custom__button' style={{ marginTop: '2rem' }}><Link to='/reservation'>Réserver</Link></button>
       </div>
       <div className="app__wrapper_form">
         <form>
-          <label typeof='text' style={{ color: 'white'}}>Formulaire de contact</label>
+          <input type="text" name='name' placeholder='Votre nom et prénom' required />
+          <input type="email" name="email" placeholder='Votre Email' required/>
+          <textarea name="message" rows="7" placeholder='Votre message' required></textarea>
+          <button type='submit' className='custom__button'>Envoyer</button>
         </form>
       </div>
     </div>

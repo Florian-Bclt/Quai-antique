@@ -8,6 +8,14 @@ import { Link } from 'react-router-dom';
 const galleryImages = [images.gallery01, images.gallery02, images.gallery03, images.gallery04, images.gallery05, images.gallery06]
 
 const Gallery = () => {
+  // const { loading, error, data } = useQuery(GET_IMAGES, {
+  //   variables: { category: "gallery" },
+  // });
+
+  // if (loading) return <div>loading...</div>;
+  // if (error) return <div>Sorry an error occured {error}</div>;
+  // if (!data) return <div>No data !</div>;
+
   const scrollRef = useRef(null);
   const scroll = (direction) => {
     const { current } = scrollRef;

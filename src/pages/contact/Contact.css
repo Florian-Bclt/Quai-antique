@@ -1,0 +1,33 @@
+.app__wrapper_form {
+  width: 30em;
+  height: 20em;
+}
+
+.app__wrapper_form form{
+  display: flex;
+  flex-direction: column;
+}
+
+.app__wrapper_form form input, textarea {
+  margin-bottom: 1em;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--color-golden);
+  padding: 1em;
+  border-radius: 10px;
+}
+
+/* ------------MEDIA QUERIES---------------*/
+
+@media screen and (max-width: 850px) {
+  .app__wrapper_form {
+    width: 30em;
+    margin-top: 3em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .app__wrapper_form {
+    width: 20em;
+    margin-top: 2em;
+  }
+}

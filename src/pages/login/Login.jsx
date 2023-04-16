@@ -1,9 +1,51 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './Login.css'
 import {MdOutlineRestaurantMenu} from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from "../../context/authContext";
+import { useForm } from '../../utility/hooks';
+import { useMutation } from "@apollo/react-hooks";
+import { gql } from 'graphql-tag';
 
-const login = () => {
+// const LOGIN_USER = gql`
+//   mutation login(
+//     $loginInput: LoginInput
+//   ) {
+//     loginUser(
+//       loginInput: $loginInput
+//     ) {
+//       email
+//       username
+//       token
+//     } 
+//   }
+// `
+
+function Login(props) {
+  // let navigate = useNavigate();
+  // const context = useContext(AuthContext);
+  // const [errors, setErrors] = useState([]);
+
+  // function loginUserCallback() {
+  //   loginUser();
+  // }
+
+  // const { onChange, onSubmit, values } = useForm(loginUserCallback, {
+  //   email: '',
+  //   password: ''
+  // });
+
+  // const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+  //   update(proxy, { data: { loginUser: userData }}) {
+  //     context.login(userData);
+  //     navigate('/dashboard');
+  //   },
+  //   onError({ graphQLErrors }) {
+  //     setErrors(graphQLErrors);
+  //   },
+  //   variables: { loginInput: values }
+  // })
+
   return (
     <div className="wrapper login">
         <div className="container">
@@ -11,7 +53,7 @@ const login = () => {
             <div className="login-text">
               <h2>Bienvenue !</h2>
               <p>Créez votre compte gratuitement</p>
-              <a href="" className="btn">S'inscrire</a>
+              <Link to="/register" className="btn">S'inscrire</Link>
             </div>
           </div>
 
@@ -25,7 +67,7 @@ const login = () => {
                 </p>
                 <p>
                   <label>Mot de passe</label>
-                  <input type="password" placeholder="Votre mot de passe" required />
+                  <input type="password" placeholder="Votre mot de passe"  required />
                 </p>	
                 <p>
                   <input type="submit" value="Se Connecter" />
@@ -42,4 +84,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
