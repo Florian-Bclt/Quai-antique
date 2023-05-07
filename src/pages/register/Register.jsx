@@ -1,30 +1,26 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../../context/authContext";
-import { useForm } from '../../utility/hooks';
-import { useMutation } from "@apollo/react-hooks";
 import { gql } from 'graphql-tag';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Register.css';
 import {MdOutlineRestaurantMenu} from 'react-icons/md'
 
-const REGISTER_USER = gql`
-  mutation Mutation(
-    $registerInput: RegisterInput
-  ) {
-    registerUser(
-      registerInput: $registerInput
-    ) {
-      email
-      username
-      token
-    }
-  }
-`
+// const REGISTER_USER = gql`
+//   mutation Mutation(
+//     $registerInput: RegisterInput
+//   ) {
+//     registerUser(
+//       registerInput: $registerInput
+//     ) {
+//       email
+//       username
+//       token
+//     }
+//   }
+// `
 
 function Register(props) {
-  const context = useContext(AuthContext);
-  let navigate = useNavigate();
-  const [errors, setErrors] = useState([]);
+  // const context = useContext(AuthContext);
+  // let navigate = useNavigate();
+  // const [errors, setErrors] = useState([]);
 
   // function registerUserCallback() {
   //   console.log('Callback hit');

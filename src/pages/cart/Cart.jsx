@@ -2,9 +2,20 @@ import React from 'react'
 import { Navbar } from '../../components'
 import './Cart.css'
 import { MenuItem, SubHeading } from '../../components'
-import { images, data } from '../../constants'
+import { images } from '../../constants'
+import { useQuery } from '@apollo/client'
+import { GET_PRODUCTS } from '../../graphQl/queries'
 
 function Cart() {
+  const {loading, error, data} = useQuery(GET_PRODUCTS);
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Erreur :</p>
+
+  const cartProducts = data.productsPagination.nodes.filter((product) => product.category === 'cart');
+  const beerProducts = data.productsPagination.nodes.filter((product) => product.category === 'beer');
+  const softProducts = data.productsPagination.nodes.filter((product) => product.category === 'soft');
+
   return (
     <>
       <Navbar />
@@ -18,8 +29,13 @@ function Cart() {
         <div className="app__cart-cart">
           <div className="app__cart-cart_list flex__center">
             <div className="app__cart-cart_items">
-              {data.cart.map((cart, index) => (
-                <MenuItem key={cart.title + index} title={cart.title} price={cart.price} tags={cart.tags} />
+              {cartProducts.map((product) => (
+                <MenuItem
+                  key={product.id}
+                  title={product.title}
+                  price={product.price + ' €'}
+                  tags={product.tags} 
+                />
               ))}
             </div>
           </div>
@@ -33,19 +49,27 @@ function Cart() {
           <div className="app__cart-cart_list flex__center drinks">
             <p className='app__cart-cart_heading'>Bières</p>
             <div className="app__cart-drink_items">
-              {data.beer.map((beer, index) => (
-                <MenuItem key={beer.title + index} title={beer.title} price={beer.price} tags={beer.tags} />
+              {beerProducts.map((product) => (
+                <MenuItem
+                  key={product.id}
+                  title={product.title}
+                  price={product.price + ' €'}
+                  tags={product.tags}
+                />
               ))}
             </div>
           </div>
           <div className="app__cart-cart_list flex__center">
             <p className='app__cart-cart_heading'>Sans Alcool</p>
             <div className="app__cart-drink_items">
-              {data.soft.map((soft, index) => (
-                <MenuItem key={soft.title + index} title={soft.title} price={soft.price} tags={soft.tags} />
+              {softProducts.map((product) => (
+                <MenuItem
+                  key={product.id}
+                  title={product.title}
+                  price={product.price + ' €'}
+                  tags={product.tags} />
               ))}
-          </div>
-
+            </div>
           </div>
         </div>
       </div>

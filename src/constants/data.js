@@ -74,7 +74,7 @@ const beer = [
   },
   {
     title: 'Dangerousse',
-    price: '4.50€',
+    price: '4€',
     tags: 'Bière rousse, légère amertume',
   },
   {

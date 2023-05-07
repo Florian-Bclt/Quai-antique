@@ -1,3 +1,5 @@
+/* DASHBOARD GENERAL */
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -10,12 +12,12 @@
 }
 
 .title {
-  margin: 2em 5em 2em 5em;
+  margin: 2em 5em 0em 5em;
   border-bottom: 1px solid var(--color-golden);
 }
 
 .cards {
-  margin: 0 5em 1em 5em;
+  margin: 2em 5em 1em 5em;
   display: flex;
   justify-content: space-between;
 
@@ -40,7 +42,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 10em;
+  height: 5em;
 }
 
 .card h1:hover{
@@ -54,6 +56,68 @@
 
 .reservations {
   margin: 1em;
+}
+
+.dashboard__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8em;
+  width: max-content;
+  font-weight: bold;
+  background: var(--color-black);
+  border: 1px solid var(--color-golden);
+  margin: 1em 70%;
+  color: var(--color-golden);
+}
+
+.dashboard__button:hover {
+  background-color: var(--color-golden);
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  transition: 0.5s ease;
+}
+
+/* TABLES */
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin : 2em 0 0 5em;
+  border: 1px solid var(--color-gray);
+}
+
+table thead th {
+  padding: 0.8em 1em;
+  font-size: 1.1em;
+  text-align: left;
+  background: #2d3436;
+  border: 1px solid var(--color-gray);
+}
+
+table tbody td {
+  padding: 0.5em 1em;
+  border: 1px solid var(--color-gray);
+}
+table tbody tr {
+  background-color: #b2bec3;
+  color: var(--color-gray);
+}
+
+table tr:nth-child(even) {
+  color: white;
+  background-color: #636e72;
+}
+
+.action__column {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: none;
+}
+
+.product__title {
+  width: 60%;
 }
 
 /* MEDIA QUERIES */

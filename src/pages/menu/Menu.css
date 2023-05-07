@@ -1,13 +1,10 @@
 .app__wrapper-menu {
-  border: 1px solid var(--color-golden);
-  border-radius: 20px;
-  padding: 2rem;
-  margin: 1rem;
   color: var(--color-white);
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   text-align: center;
+  justify-content: space-around;
   font-size: 1rem;
   width: 100%;
 }
@@ -16,9 +13,10 @@
   color: var(--color-golden);
 }
 
-.app__wrapper-menu h1 {
+.app__wrapper-menu .menu__wrapper h1 {
   color: var(--color-golden);
   font-weight: 900;
+  font-size: 1.5em;
 }
 
 .app__wrapper-menu h2 {
@@ -27,9 +25,49 @@
 }
 
 .app__wrapper-menu h6 {
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.app__wrapper-menu ul {
+  list-style: none;
 }
 
 .app__wrapper-menu img {
   margin: 1.5rem;
+}
+
+.menu__wrapper {
+  width: 40%;
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--color-golden);
+}
+
+.menu__wrapper ul li p {
+  margin-bottom: 0.8em;
+}
+
+/* ------------MEDIA QUERIES---------------*/
+
+@media screen and (max-width: 2000px) {
+  .menu__wrapper {
+    min-height: 70em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .app__wrapper-menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu__wrapper {
+    margin-bottom: 2em;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+ .app__wrapper-menu {
+  font-size: 0.8em;
+ }
 }

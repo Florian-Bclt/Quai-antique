@@ -1,0 +1,54 @@
+/* EDIT BUTTON */
+.btn-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(8, 105, 8);
+  border: none;
+  border-radius: 20px;
+  width: 2em;
+  height: 2em;
+  font-size: 1em;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  border: 1px solid rgb(4, 60, 4);
+  transition: 0.5s ease;
+}
+
+.btn-edit i {
+  margin-top: 5px;
+}
+
+.btn-edit i:hover {
+  color :rgb(4, 60, 4);
+  transition: 0.5s ease;
+}
+
+/* DELETE BUTTON */
+
+.btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(130, 10, 10);
+  border: none;
+  border-radius: 20px;
+  width: 2em;
+  height: 2em;
+  font-size: 1em;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  border: 1px solid rgb(181, 126, 126);
+  transition: 0.5s ease;
+}
+
+.btn-delete i:hover {
+  color : rgb(181, 126, 126);
+  transition: 0.5s ease;
+}
