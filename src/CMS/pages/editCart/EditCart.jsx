@@ -15,6 +15,7 @@ const EditCart = () => {
   const beerProducts = data.productsPagination.nodes.filter((product) => product.category === 'beer');
   const softProducts = data.productsPagination.nodes.filter((product) => product.category === 'soft');
   const winesProducts = data.productsPagination.nodes.filter((product) => product.category === 'wines');
+  const cocktailsProducts = data.productsPagination.nodes.filter((product) => product.category === 'cocktails');
 
   return (
     <>
@@ -60,6 +61,30 @@ const EditCart = () => {
           </thead>
           <tbody>
             {winesProducts.map((product) => (
+              <tr key={product.id}>
+                <td className='product__title'>{product.title}</td>
+                <td>{product.price}</td>
+                <td className='action__column'>
+                  <EditButton to={`/dashboard/edit-cart/${product.id}`}/>
+                  <DeleteButton />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="productsTable__category">
+        <table>
+          <thead>
+            <tr>
+              <th>Cockails</th>
+              <th>Prix</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cocktailsProducts.map((product) => (
               <tr key={product.id}>
                 <td className='product__title'>{product.title}</td>
                 <td>{product.price}</td>

@@ -11,7 +11,7 @@ export const LOGIN_MUTATION = gql`
 `;
 
 // USER
-export const USER_CREATE = gql `
+export const USER_CREATE = gql`
 mutation userCreate(
   $email: String, 
   $password: String, 
@@ -42,4 +42,25 @@ mutation userCreate(
 }
 `
 
-
+// RESERVATION
+export const RESERVATION_CREATE = gql`
+mutation reservationCreate($userId: String!, $reservation: ReservationCreateInput!) {
+  createReservation(userId: $userId, reservation: $reservation) {
+    id
+    user {
+      id
+      firstName
+      lastName
+      allergy
+    }
+    table {
+      id
+      title
+      places
+    }
+    date
+    reservationHour
+    places
+  }
+}
+`

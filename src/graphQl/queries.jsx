@@ -1,7 +1,8 @@
 import { gql } from '@apollo/client'
 
 // PRODUCTS
-export const GET_PRODUCTS = gql `
+
+export const GET_PRODUCTS = gql`
   query productsList {
     productsPagination(skip: 0, take: 30) {
       totalCount
@@ -23,7 +24,8 @@ export function getProducts(client) {
 }
 
 // MENUS
-export const GET_ALL_MENUS = gql `
+
+export const GET_ALL_MENUS = gql`
   query {
     getAllMenus {
       id
@@ -53,7 +55,7 @@ export function getAllMenus(client) {
 
 // USERS
 
-export const GET_CLIENT = gql `
+export const GET_CLIENT = gql`
   query client {
     userGetByRole(role: "client") {
       id
@@ -71,7 +73,7 @@ export function getClientUsers(client) {
   });
 }
 
-export const  GET_TEAM = gql `
+export const  GET_TEAM = gql`
   query getUsersByRoles {
     userGetByRoles(roles: ["admin", "manager"]) {
       id
@@ -91,7 +93,7 @@ export function getTeamUsers(client) {
 
 // TABLES
 
-  export const GET_TABLES = gql `
+  export const GET_TABLES = gql`
   query getTables {
     tablesPagination(skip: 0, take: 10, sortBy: ASC) {
       totalCount
@@ -110,3 +112,58 @@ export function getTeamUsers(client) {
       variables: { skip, take, sortBy }
     });
   }
+
+  // RESERVATIONS 
+
+ export const GET_RESERVATIONS_BY_DAY = gql`
+  query GetReservationsByDay($day: String!) {
+    getReservationsByDay(day: $day) {
+      id
+      user {
+        id
+        firstName
+        lastName
+        allergy
+      }
+      table {
+        id
+        title
+        places
+      }
+      date
+      reservationHour
+      reservationEndHour
+      places
+    }
+  }
+`;
+
+export function getReservations(client, user, table, date, reservationHour, reservationEndHour, places) {
+  return client.query({
+    query: GET_RESERVATIONS_BY_DAY,
+    variables: { user, table, day: date.toISOString().substr(0, 10), reservationEndHour, reservationHour, places}
+  })
+}
+
+// HORAIRE
+
+export const GET_HOURS = gql`
+query openingHoursList {
+  openingHours {
+    id
+    createdAt
+    dayOfWeek
+    isClosed
+    lunchOpeningTime
+    lunchClosingTime
+    dinnerOpeningTime
+    dinnerClosingTime
+  }
+}
+`
+
+export function getHours(client) {
+  return client.query({
+    query: GET_HOURS
+  });
+}

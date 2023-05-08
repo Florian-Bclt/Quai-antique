@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import './ReservationForm.css';
 import { MdOutlineRestaurantMenu} from 'react-icons/md';
 import { BiCalendar } from 'react-icons/bi';
 import Navbar from '../../components/Navbar/Navbar';
+import { GET_TABLES } from '../../graphQl/queries'
+import { useQuery } from '@apollo/client';
 
 const ReservationForm = () => {
+  const { loading, error, data } = useQuery(GET_TABLES);
+  const [selectedTable, setSelectedTable] = useState(null);
+
+  useEffect(() => {
+    if (data && data.tablesPagination && data.tablesPagination.nodes) {
+      setSelectedTable(data.tablesPagination.nodes[0].id);
+    }
+  }, [data]);
+
   return (
     <>
     <Navbar />
@@ -13,19 +24,18 @@ const ReservationForm = () => {
       <div className="app_reservation-form p__opensans">
         <p>Pour toutes réservations de plus de 10 personnes, merci de contacter directement le restaurant.</p>
         <form action='' method='get' className='covered'>
-          <label htmlFor='covered' className='reservation-icon'><MdOutlineRestaurantMenu/></label>
-          <select className='reservation-input' name='places'>
-            <option value="1">1 couvert</option>
-            <option value="2">2 couverts</option>
-            <option value="3">3 couverts</option>
-            <option value="4">4 couverts</option>
-            <option value="5">5 couverts</option>
-            <option value="6">6 couverts</option>
-            <option value="7">7 couverts</option>
-            <option value="8">8 couverts</option>
-            <option value="9">9 couverts</option>
-            <option value="10">10 couverts</option>
-          </select>
+          <label htmlFor='table' className='reservation-icon'><MdOutlineRestaurantMenu/></label>
+            {loading && <p>Loading...</p>}
+            {error && <p>Error: {error.message}</p>}
+            {data && data.tablesPagination && data.tablesPagination.nodes && (
+              <select className='reservation-input' name='table' value={selectedTable} onChange={(e) => selectedTable(e.target.value)}>
+                {data.tablesPagination.nodes.map((table) => (
+                  <option key={table.id} value={table.id} disabled={!table.available}>
+                    {table.title} - {table.places} places {table.available ? '' : '- Indisponible'}
+                  </option>
+                ))}
+              </select>
+            )}
           <label id='calendar' htmlFor="date" className='reservation-icon'><BiCalendar /></label>
           <input className='reservation-input' type="date"/>
         </form>

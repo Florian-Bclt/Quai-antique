@@ -1,10 +1,21 @@
 import React from 'react';
-import { images, data } from '../../constants'
+import { images } from '../../constants'
 import { MenuItem, SubHeading } from '../../components'
 import './SpecialMenu.css';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCTS } from '../../graphQl/queries';
 
-const SpecialMenu = () => (
+const SpecialMenu = () => { 
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Erreur :</p>;
+
+  const winesProducts = data.productsPagination.nodes.filter((product) => product.category === 'wines');
+  const cocktailsProducts = data.productsPagination.nodes.filter((product) => product.category === 'cocktails');
+  
+  return (
     <div className="app__specialMenu flex__center section__padding" id='menu'>
       <div className="app__specialMenu-title">
         <SubHeading title="Parce qu'ils accompagnent nos plats" />
@@ -15,8 +26,12 @@ const SpecialMenu = () => (
         <div className="app__specialMenu-menu_wine flex__center">
           <p className='app__specialMenu-menu_heading'>Vins</p>
           <div className="app__specialMenu_menu_items">
-            {data.wines.map((wine, index) => (
-              <MenuItem key={wine.title + index} title={wine.title} price={wine.price} tags={wine.tags} />
+            {winesProducts.map((product) => (
+              <MenuItem 
+                key={product.id} 
+                title={product.title} 
+                price={product.price} 
+                tags={product.tags} />
             ))}
           </div>
         </div>
@@ -28,8 +43,12 @@ const SpecialMenu = () => (
         <div className="app__specialMenu-menu_cocktails flex__center">
           <p className='app__specialMenu-menu_heading'>Cocktails</p>
           <div className="app__specialMenu_menu_items">
-            {data.cocktails.map((cocktail, index) => (
-              <MenuItem key={cocktail.title + index} title={cocktail.title} price={cocktail.price} tags={cocktail.tags} />
+            {cocktailsProducts.map((product) => (
+              <MenuItem 
+                key={product.id} 
+                title={product.title} 
+                price={product.price} 
+                tags={product.tags} />
             ))}
           </div>
         </div>
@@ -38,6 +57,6 @@ const SpecialMenu = () => (
         <button type='button' className='custom__button'><Link to='/cart' style={{ color: 'unset' }}>Découvrir la carte</Link></button>
       </div>
     </div>
-);
-
+  );
+}
 export default SpecialMenu;
