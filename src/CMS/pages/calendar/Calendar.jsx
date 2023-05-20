@@ -32,17 +32,14 @@ const Calendar = () => {
             </tr>
           </thead>
           <tbody>
-            {data.openingHours.slice().sort((a, b) => {
-              const weekdays = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-              return weekdays.indexOf(a.dayOfWeek.toLowerCase()) - weekdays.indexOf(b.dayOfWeek.toLowerCase());
-            }).map(({ id, dayOfWeek, isClosed, lunchOpeningTime, lunchClosingTime, dinnerOpeningTime, dinnerClosingTime }) => (
+            {data.openingHours.map(({ id, dayOfWeek, isClosed, lunchOpeningTime, lunchClosingTime, dinnerOpeningTime, dinnerClosingTime }) => (
               <tr key={id}>
                 <td>{dayOfWeek}</td>
                 <td>{isClosed ? 'Fermé' : 'Ouvert'}</td>
-                <td>{lunchOpeningTime}</td>
-                <td>{lunchClosingTime}</td>
-                <td>{dinnerOpeningTime}</td>
-                <td>{dinnerClosingTime}</td>
+                <td>{lunchOpeningTime.slice(0, 5)}</td>
+                <td>{lunchClosingTime.slice(0, 5)}</td>
+                <td>{dinnerOpeningTime.slice(0, 5)}</td>
+                <td>{dinnerClosingTime.slice(0, 5)}</td>
                 <td className='action__column'>
                   <EditButton to={`/dashboard/edit-hour/${id}`}/>
                   <DeleteButton />

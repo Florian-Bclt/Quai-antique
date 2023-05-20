@@ -5,6 +5,7 @@ import { images } from '../../constants';
 import './Footer.css';
 import { useQuery } from '@apollo/client';
 import { GET_HOURS } from '../../graphQl/queries';
+import {getDayOfWeekName} from '../../dayOfWeek.ts'
 
 const Footer = () => { 
   const {loading, error, data } = useQuery(GET_HOURS);
@@ -37,8 +38,8 @@ const Footer = () => {
           <h1 className='app__footer-headtext'>Nos Horaires</h1>
             {data.openingHours.map((hour) => (
               <p className='p__opensans' key={hour.id} style={{ fontSize: '0.8em'}}>
-                <span style={{ color: 'var(--color-golden)' }}>{hour.dayOfWeek}{" : "}</span>
-                {hour.isClosed ? "Fermé" : `${hour.lunchOpeningTime} - ${hour.lunchClosingTime} / ${hour.dinnerOpeningTime} - ${hour.dinnerClosingTime}`}
+                <span style={{ color: 'var(--color-golden)' }}>{getDayOfWeekName(hour.dayOfWeek)}{" : "}</span>
+                {hour.isClosed ? "Fermé" : `${hour.lunchOpeningTime.slice(0, 5)} - ${hour.lunchClosingTime.slice(0, 5)} / ${hour.dinnerOpeningTime.slice(0, 5)} - ${hour.dinnerClosingTime.slice(0, 5)}`}
               </p>
             ))}
         </div>

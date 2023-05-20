@@ -8,7 +8,8 @@ export const AppContext = createContext({});
 
 // Création de l'instance de ApolloClient
 const httpLink = createHttpLink({
-  uri: "http://localhost:4200/graphql"
+  // uri: "http://app-8a84a013-ae4a-4e4f-9176-5e1c62e8a561.cleverapps.io/",
+  uri: "http://localhost:4200/graphql",
 });
 
 const authLink = new ApolloLink((operation, forward) => {

@@ -41,7 +41,7 @@ const Tables = () => {
           <h1>Les Tables</h1>
         </div>
           <button className='dashboard__button'>
-            <Link to="/dashboard/add-member">Ajouter une table</Link>
+            <Link to="/dashboard/add-table">Ajouter une table</Link>
           </button>
 
             <table>

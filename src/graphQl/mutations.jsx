@@ -10,18 +10,24 @@ export const LOGIN_MUTATION = gql`
   }
 `;
 
+// ENUM ROLE
+export const UserRole = {
+  CLIENT: 'CLIENT',
+  ADMIN: 'ADMIN',
+  MANAGER: 'MANAGER'
+}
+
 // USER
 export const USER_CREATE = gql`
-mutation userCreate(
-  $email: String, 
-  $password: String, 
-  $firstName: String, 
-  $lastName: String, 
-  $allergy: String = null, 
-  $role: UserRole!
+  mutation userCreate(
+    $email: String!, 
+    $password: String!, 
+    $firstName: String!, 
+    $lastName: String!, 
+    $allergy: String, 
+    $role: UserRole!
   ) {
-  userCreate(
-    input: {
+  userCreate(input: {
     email: $email,
     password: $password,
     firstName: $firstName,
@@ -40,7 +46,13 @@ mutation userCreate(
     }
   }
 }
-`
+`;
+
+export const USER_DELETE = gql`
+  mutation UserDelete($id: String!) {
+    userDelete(id: $id)
+  }
+`;
 
 // RESERVATION
 export const RESERVATION_CREATE = gql`
@@ -63,4 +75,4 @@ mutation reservationCreate($userId: String!, $reservation: ReservationCreateInpu
     places
   }
 }
-`
+`;

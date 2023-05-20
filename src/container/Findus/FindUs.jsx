@@ -4,6 +4,7 @@ import { SubHeading } from '../../components';
 import { Link } from 'react-router-dom';
 import { GET_HOURS } from '../../graphQl/queries';
 import { useQuery } from '@apollo/client';
+import {getDayOfWeekName} from '../../dayOfWeek.ts'
 
 const FindUs = () => {
   const {loading, error, data } = useQuery(GET_HOURS);
@@ -23,8 +24,8 @@ const FindUs = () => {
 
             {data.openingHours.map((hour) => (
               <p className='p__opensans' key={hour.id}>
-                <span style={{ color: 'var(--color-golden)' }}>{hour.dayOfWeek}{" : "}</span>
-                {hour.isClosed ? "Fermé" : `${hour.lunchOpeningTime} - ${hour.lunchClosingTime} / ${hour.dinnerOpeningTime} - ${hour.dinnerClosingTime}`}
+                <span style={{ color: 'var(--color-golden)' }}>{getDayOfWeekName(hour.dayOfWeek)}{" : "}</span>
+                {hour.isClosed ? "Fermé" : `${hour.lunchOpeningTime.slice(0, 5)} - ${hour.lunchClosingTime.slice(0, 5)} / ${hour.dinnerOpeningTime.slice(0, 5)} - ${hour.dinnerClosingTime.slice(0, 5)}`}
               </p>
             ))}
 

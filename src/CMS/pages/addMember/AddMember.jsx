@@ -1,36 +1,55 @@
 import React, { useState } from 'react'
-import './AddMember.css'
 import CmsNavbar from '../../components/cmsNavbar/CmsNavbar'
 import { useMutation } from '@apollo/client';
-import { USER_CREATE } from '../../../graphQl/mutations';
+import { USER_CREATE, UserRole } from '../../../graphQl/mutations';
+import { GET_CLIENT, GET_TEAM } from '../../../graphQl/queries';
 
 const AddMember = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [role, setRole] = useState('');
-  const [userCreate] = useMutation(USER_CREATE);
+  const [allergy, setAllergy] = useState('');
+  const [role, setRole] = useState(UserRole.CLIENT);
+
+  const [userCreate] = useMutation(USER_CREATE, {
+    refetchQueries: [
+      { query: GET_TEAM },
+      { query: GET_CLIENT }
+    ]
+  });
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
     const { data } = await userCreate({
       variables: {
-        email,
-        password,
-        firstName,
-        lastName,
+        email: email,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        allergy: allergy,
         role: role,
       },
     });
-    console.log(data);
+
+    const createdUser = data.userCreate.user;
+    console.log(createdUser);
     // Réinitialiser le formulaire après la création de l'utilisateur
     setEmail('');
     setPassword('');
     setFirstName('');
     setLastName('');
-    setRole();
-  };
+    setAllergy('');
+    setRole(UserRole.CLIENT);
+    // Affiche un message de confirmation
+    setMessage("L'utilisateur a été créé avec succès.");
+  } catch (error) {
+    // Affiche un message d'erreur
+    setMessage("Une erreur s'est produite lors de la création de l'utilisateur")
+    console.log(error.graphQLErrors)
+  }; }
 
   return (
     <>
@@ -49,7 +68,7 @@ const AddMember = () => {
           }}>
             Création d'un membre
           </h1>
-          <form onSubmit={handleSubmit} className='register__form'>
+          <form onSubmit={handleSubmit} className='register__form' style={{ marginTop: '25px'}}>
             <p>
               <label htmlFor="email">Email:</label>
               <input
@@ -58,6 +77,7 @@ const AddMember = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                autoComplete='email'
               />
             </p>
             <p>
@@ -71,35 +91,52 @@ const AddMember = () => {
               />
             </p>
             <p>
-              <label htmlFor="firstName">Prénom:</label>
+              <label htmlFor="firstName">Nom:</label>
               <input
                 type="text"
                 id="firstName"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
+                autoComplete='firstName'
               />
             </p>
             <p>
-              <label htmlFor="lastName">Nom de famille:</label>
+              <label htmlFor="lastName">Prénom:</label>
               <input
                 type="text"
                 id="lastName"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 required
+                autoComplete='lastName'
+              />
+            </p>
+            <p>
+              <label htmlFor="allergy">Allergie:</label>
+              <input
+                type="text"
+                id="allergy"
+                value={allergy}
+                onChange={(e) => setAllergy(e.target.value)}
+                autoComplete='allergy'
               />
             </p>
             <p>
               <label htmlFor="role">Role:</label>
               <select name='role' value={role} onChange={(e) => setRole(e.target.value)}>
-                <option value='client'>Client</option>
-                <option value='admin'>Admin</option>
-                <option value='manager'>Manager</option>
+                <option value={UserRole.CLIENT}>CLIENT</option>
+                <option value={UserRole.ADMIN}>ADMIN</option>
+                <option value={UserRole.MANAGER}>MANAGER</option>
               </select>
             </p>
             <button type="submit" className='register__btn' style={{ marginTop: '1em'}}>Créer l'utilisateur</button>
           </form>
+          {message && (
+            <p className={message.includes('succès') ? 'success-message' : 'error-message'}>
+              {message}
+            </p>
+          )}
         </div>
       </div>  
       </div>
