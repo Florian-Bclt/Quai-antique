@@ -6,15 +6,18 @@ Guide D'installation
 
 --> Ouvrir le dossier téléchargé avec votre éditeur de code
 
-Dans la console :
+## Installation
 
-Installer les dépendances nécessaires à l'application
+```bash
+# Installer les dépendances
+$ npm install
+```
 
---> npm install
-
-Lancer l'application :
-
---> Npm start
+## Lancer l'application
+```bash
+# Lancer l'application
+$ npm start
+```
 
 A noter que l'application est liée au backend il vous faudra donc lancer le serveur du repository
 quai-antiqueAPI, sinon le site ne s'affichera pas dans l'attente des données du serveur.
