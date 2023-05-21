@@ -14,6 +14,8 @@ const Team = () => {
     refetchQueries: [{ query: GET_TEAM }]
   });
   const [message, setMessage] = useState('');
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   if (queryLoading) return <p>Loading...</p>;
   if (error) return <p>Erreur :</p>;
@@ -21,6 +23,11 @@ const Team = () => {
   const { userGetByRoles } = data;
 
   const handleDelete = async (userId) => {
+    setShowConfirmationModal(true);
+    setSelectedUserId(userId);
+   };
+
+   const confirmDelete = async (userId) => {
     try {
       await userDelete({
         variables: {
@@ -29,6 +36,7 @@ const Team = () => {
       });
     // Affiche un message de confirmation
     setMessage("L'utilisateur a été supprimé avec succès.");
+    setShowConfirmationModal(false);
   } catch (error) {
     // Affiche un message d'erreur
     setMessage("Une erreur s'est produite lors de la suppresion de l'utilisateur")
@@ -43,9 +51,14 @@ const Team = () => {
         <div className="title">
           <h1>Le Personnel</h1>
         </div>
-      <button className='dashboard__button'>
-        <Link to="/dashboard/add-member">Ajouter un membre <MdPersonAdd style={{ fontSize:"1.3em"}}/></Link>
-      </button>
+        <button className='dashboard__button'>
+          <Link to="/dashboard/add-member">Ajouter un membre <MdPersonAdd style={{ fontSize:"1.3em"}}/></Link>
+        </button>
+        {message && (
+            <p className={message.includes('succès') ? 'success-message' : 'error-message'}>
+              {message}
+            </p>
+          )}
 
         <table>
         <thead>
@@ -72,12 +85,18 @@ const Team = () => {
           ))}
         </tbody>
         </table>
-        {message && (
-            <p className={message.includes('succès') ? 'success-message' : 'error-message'}>
-              {message}
-            </p>
-          )}
       </div>
+      {showConfirmationModal && (
+        <div className="confirmation-modal">
+          <div className="confirmation-modal-content">
+            <p>Êtes-vous sûr de vouloir supprimer cet utilisateur ?</p>
+            <div className='buttons'>
+              <button className='confirm-btn' onClick={() => confirmDelete(selectedUserId)}>Confirmer</button>
+              <button className='cancel-btn' onClick={() => setShowConfirmationModal(false)}>Annuler</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

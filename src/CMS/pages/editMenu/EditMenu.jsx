@@ -60,7 +60,6 @@ const EditMenu = () => {
                 </td>
                 <td className='action__column'>
                   <EditButton to={`/dashboard/edit-menu/${menu.id}`}/>
-                  <DeleteButton />
                 </td>
               </tr>
             ))}

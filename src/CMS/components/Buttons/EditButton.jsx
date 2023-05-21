@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { MdModeEditOutline } from 'react-icons/md';
 import './Buttons.css';
 
-const EditButton = ({ to }) => {
+const EditButton = ({ onClick }) => {
   return (
-    <Link to={to} className='btn-edit'>
+    <button className='btn-edit' onClick={onClick}>
       <i><MdModeEditOutline /></i>
-    </Link>
+    </button>
   );
 };
 

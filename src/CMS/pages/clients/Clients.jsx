@@ -50,6 +50,11 @@ const Clients = () => {
         <div className="title">
           <h1>Clients</h1>
         </div>
+        {message && (
+            <p className={message.includes('succès') ? 'success-message' : 'error-message'}>
+              {message}
+            </p>
+          )}
 
         <table>
         <thead>
@@ -76,11 +81,6 @@ const Clients = () => {
           ))}
         </tbody>
         </table>
-        {message && (
-            <p className={message.includes('succès') ? 'success-message' : 'error-message'}>
-              {message}
-            </p>
-          )}
       </div>
 
       {showConfirmationModal && (
