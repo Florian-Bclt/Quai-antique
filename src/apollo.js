@@ -1,10 +1,8 @@
 import { ApolloClient, InMemoryCache, createHttpLink, ApolloLink } from '@apollo/client';
-import { useEffect, useState } from 'react';
-import { createContext } from 'react';
+import { useEffect, useState, useContext, createContext } from 'react';
 
 // Création du contexte
 export const AppContext = createContext({});
-
 
 // Création de l'instance de ApolloClient
 const httpLink = createHttpLink({
@@ -14,6 +12,8 @@ const httpLink = createHttpLink({
 
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('token');
+
+    localStorage.setItem('token', token);
 
   operation.setContext(({ headers = {} }) => ({
     headers: {

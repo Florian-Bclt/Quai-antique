@@ -5,14 +5,17 @@ import './index.css';
 import App from './App';
 import { ApolloProvider } from '@apollo/client';
 import client, { AppProvider } from './apollo';
+import { AuthProvider } from './context/authContext';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <AuthProvider>
     <ApolloProvider client={client}>
-      <AppProvider>
-        <App />
-      </AppProvider>
+      <BrowserRouter>
+        <AppProvider>
+          <App />
+        </AppProvider>
+      </BrowserRouter>
     </ApolloProvider>
-  </BrowserRouter>
+  </AuthProvider>
 , document.getElementById('root'));
 

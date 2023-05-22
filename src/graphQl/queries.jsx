@@ -91,6 +91,23 @@ export function getTeamUsers(client) {
   });
 }
 
+export const GET_USER_BY_ID = gql`
+  query getUserById($id: String!, $role: String) {
+    getUserById(id: $id, role: $role) {
+      id
+      email
+      firstName
+      lastName
+      allergy
+    }
+  }
+`
+export function getUserById(client) {
+  return client.query({
+    query: GET_USER_BY_ID
+  });
+}
+
 // TABLES
 
   export const GET_TABLES = gql`
