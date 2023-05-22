@@ -29,11 +29,10 @@ function Login() {
         variables: { username, password }
       });
       const { accessToken, role, user } = token.data.authLogin;
-      console.log('role', role)
       localStorage.setItem('token', accessToken);
 
       setUser(user);
-
+      
       if (role === 'admin' || role === 'manager') {
         navigate('/dashboard', { replace: true });
       } else if (role === 'client') {

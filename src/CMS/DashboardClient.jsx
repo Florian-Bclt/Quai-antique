@@ -1,33 +1,44 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import {MdLogout} from 'react-icons/md'
 import { GET_USER_BY_ID } from '../graphQl/queries';
-import { useQuery } from '@apollo/client';
 import { AppContext } from '../apollo';
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
 const DashboardClient = () => {
-  const { user } = useContext(AppContext);
+  const { role, user } = useContext(AppContext);
+  const [authenticated, setAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
-  const { loading, error, data } = useQuery(GET_USER_BY_ID, {
+  useEffect(() => {
+   const token = localStorage.getItem('token');
+   if(!token) {
+     navigate('login', { replace: true });
+     return;
+   }
+   setAuthenticated(true);
+  }, [navigate]);
+
+  
+  const { loading, data, error  } = useQuery(GET_USER_BY_ID, {
     variables: {
-      id: user?.id, 
+      id: user?.id,
       role: user?.role
     },
-    skip: !user,
+    skip: !user
   });
   
-  if (!user) {
-    return <p style={{ color : 'white'}}>Utilisateur non trouvé.</p>
-  }
-
-  if (loading) return <p>Loading...</p>
-
-  if (error) return <p>Une erreur est survenue.</p>
+  if (loading) {return <p>Loading...</p>}
   
-  const userData = data?.getUserById;
+  if (error) {return <p>Une erreur est survenue.</p>}
+  
+  if(!authenticated) {
+   return null;
+  }
 
   const logout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/login';
+    window.location.href = 'login';
   };
 
   return (
@@ -44,27 +55,31 @@ const DashboardClient = () => {
         </button>
       </nav>
 
-      <div className='p__opensans'>
-      <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Email</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Allergy</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{user.id}</td>
-              <td>{user.email}</td>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.allergy}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className='dashboard'>
+        {data?.getUserById ? (
+          <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Email</th>
+                  <th>Prénom</th>
+                  <th>Nom</th>
+                  <th>Allergie</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{data.getUserById.id}</td>
+                  <td>{data.getUserById.email}</td>
+                  <td>{data.getUserById.firstName}</td>
+                  <td>{data.getUserById.lastName}</td>
+                  <td>{data.getUserById.allergy}</td>
+                </tr>
+              </tbody>
+            </table>
+        ): (
+          <p>Aucune donnée utilisateur trouvée.</p>
+        )}
       </div>
     </>
   )

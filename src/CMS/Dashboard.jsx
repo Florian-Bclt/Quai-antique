@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useState, useContext, useEffect} from 'react';
 import './Dashboard.css'
 import CmsNavbar from './components/cmsNavbar/CmsNavbar'
 import { HiUserGroup, HiUser, HiOutlineBookOpen } from "react-icons/hi";
 import {MdOutlineRestaurant} from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import GetReservations from './components/GetReservations/GetReservations';
+import { AppContext } from '../apollo';
 
 
 const Dashboard = () => {
+   const { role } = useContext(AppContext)
+   const [authenticated, setAuthenticated] = useState(false);
+   const navigate = useNavigate();
+
+   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(!token) {
+      navigate('login', { replace: true });
+      return;
+    }
+    setAuthenticated(true);
+   }, [navigate]);
+
+   if(!authenticated) {
+    return null;
+   }
     return (
       <>
         <CmsNavbar />
