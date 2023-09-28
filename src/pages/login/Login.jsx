@@ -34,11 +34,11 @@ function Login() {
       setUser(user);
       
       if (role === 'admin' || role === 'manager') {
-        navigate('/dashboard', { replace: true });
+        navigate('/dashboard');
       } else if (role === 'client') {
-        navigate('/dashboard-client', { replace: true});
+        navigate('/dashboard-client');
       } else {
-        navigate('/register', { replace: true })
+        navigate('/register')
       }
     } catch (error) {
       if (error.status === 400) {

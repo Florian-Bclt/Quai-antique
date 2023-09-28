@@ -6,8 +6,9 @@
   margin-left: 25%;
   margin-top: 2rem;
   width: 50%;
-  height: 75vh;
+  height: max-content;
   box-shadow: 0px 0px 6px 0px var(--color-golden);
+  padding: 1rem 0;
 }
 
 .app__reservation-title {
@@ -78,3 +79,37 @@
   color: var(--color-golden);
   border: 1px solid var(--color-golden);
 }
+
+/* ------------MEDIA QUERIES---------------*/
+
+@media screen and (max-width: 450px) {
+  .app__reservation-container {
+   width: 95%;
+   margin: auto;
+   padding: 1em 0em;
+   display: flex;
+   flex-direction: column;
+   height: max-content;
+   }
+ 
+   .app_reservation-form {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+   }
+ 
+   .app_reservation-form form {
+     display: flex;
+     flex-direction: row;
+     align-items: left;
+     width: 100%;
+     margin: 0;
+   }
+   .app_reservation-form label {
+     width: 60%;
+     display: flex;
+     justify-content: center;
+     margin-left: 0 0.5em;
+   }
+ }

@@ -13,7 +13,7 @@ const DashboardClient = () => {
   useEffect(() => {
    const token = localStorage.getItem('token');
    if(!token) {
-     navigate('login', { replace: true });
+     navigate('/login');
      return;
    }
    setAuthenticated(true);

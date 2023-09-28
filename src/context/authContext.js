@@ -6,14 +6,20 @@ const initialState = {
 }
 
 if(localStorage.getItem("token")) {
-  const decodeToken = jwtDecode(localStorage.getItem("token"));
+  try {
 
-  if(decodeToken.exp * 1000 < Date.now()) {
-    localStorage.removeItem("token");
-  } else {
-    initialState.user = decodeToken;
+      const decodeToken = jwtDecode(localStorage.getItem("token"));
+    
+      if(decodeToken.exp * 1000 < Date.now()) {
+        localStorage.removeItem("token");
+      } else {
+        initialState.user = decodeToken;
+      }
+    } catch {
+      console.error("Invalid token:");
+      localStorage.removeItem("token");
+    }
   }
-}
 
 const AuthContext = createContext ({
   user: null,
@@ -27,8 +33,8 @@ function authReducer(state, action) {
       return {
         ...state,
         user: action.payload
-      }
-    case 'LOGOUt':
+      };
+    case 'LOGOUT':
     return {
       ...state,
       user: null

@@ -25,4 +25,4 @@ const awards = [
 
 
 
-export default {  awards };
+export default { awards };
