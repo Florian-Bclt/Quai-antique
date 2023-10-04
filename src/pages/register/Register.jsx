@@ -112,7 +112,6 @@ function Register() {
               <label htmlFor="role">Role:</label>
               <select name='role' value={role} onChange={(e) => setRole(e.target.value)}>
                 <option value={UserRole.CLIENT} defaultValue>CLIENT</option>
-                <option value={UserRole.ADMIN} defaultValue>ADMIN</option>
               </select>
             </p>
           <button className="register__btn" type="submit">S'inscrire</button>

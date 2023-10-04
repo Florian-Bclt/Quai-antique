@@ -22,15 +22,18 @@ const DashboardClient = () => {
   
   const { loading, data, error  } = useQuery(GET_USER_BY_ID, {
     variables: {
-      id: user?.id,
-      role: user?.role
+      id: user?.id || '',
+      role,
     },
-    skip: !user
+    skip: !user || !authenticated,
   });
   
   if (loading) {return <p>Loading...</p>}
   
-  if (error) {return <p>Une erreur est survenue.</p>}
+  if (error) {
+    console.error('Erreur GraphQL:', error);
+    return <p>Une erreur est survenue.</p>
+  }
   
   if(!authenticated) {
    return null;
@@ -60,7 +63,6 @@ const DashboardClient = () => {
           <table>
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Email</th>
                   <th>Prénom</th>
                   <th>Nom</th>
@@ -69,7 +71,6 @@ const DashboardClient = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>{data.getUserById.id}</td>
                   <td>{data.getUserById.email}</td>
                   <td>{data.getUserById.firstName}</td>
                   <td>{data.getUserById.lastName}</td>

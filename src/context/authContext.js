@@ -32,12 +32,14 @@ function authReducer(state, action) {
     case 'LOGIN':
       return {
         ...state,
-        user: action.payload
+        user: action.payload.user,
+        role: action.payload.role
       };
     case 'LOGOUT':
     return {
       ...state,
-      user: null
+      user: null,
+      role: null
     }
     default:
       return state;
@@ -51,7 +53,10 @@ function AuthProvider(props) {
     localStorage.setItem("token", userData.token);
     dispatch({
       type: 'LOGIN',
-      payload: userData
+      payload: {
+        user: userData,
+        role: userData.role
+      }
     })
   }
 
@@ -62,7 +67,12 @@ function AuthProvider(props) {
 
   return (
     <AuthContext.Provider 
-      value={{ user: state.user, login, logout}}
+      value={{
+        user: state.user,
+        role: state.role,
+        login,
+        logout
+      }}
       {...props}
     />
   )

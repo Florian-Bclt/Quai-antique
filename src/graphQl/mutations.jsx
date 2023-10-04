@@ -6,6 +6,14 @@ export const LOGIN_MUTATION = gql`
     authLogin(username: $username, password: $password) {
       accessToken
       role
+      user {
+        id
+        email
+        firstName
+        lastName
+        allergy
+        role
+      }
     }
   }
 `;

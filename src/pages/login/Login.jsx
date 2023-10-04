@@ -25,13 +25,17 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const token = await authLogin({
-        variables: { username, password }
-      });
-      const { accessToken, role, user } = token.data.authLogin;
-      localStorage.setItem('token', accessToken);
-
-      setUser(user);
+      const {data} = await authLogin({
+        variables: {
+          username,
+          password,
+        }
+      })
+      
+      const { accessToken, role, user } = data.authLogin;
+      localStorage.setItem('token', accessToken, role);
+      setUser(user, role);
+      
       
       if (role === 'admin' || role === 'manager') {
         navigate('/dashboard');
